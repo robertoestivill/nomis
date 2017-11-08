@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion 26
+  buildToolsVersion '26.0.2'
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+
+  defaultConfig {
+    applicationId "com.robertoestivill.nomis"
+    minSdkVersion 24
+    targetSdkVersion 26
+    versionCode 1
+    versionName "0.1"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  api "com.google.android.things:androidthings:0.4-devpreview"
+
+  implementation "com.google.android.things.contrib:driver-button:0.4"
+
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.19.3"
+}
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
